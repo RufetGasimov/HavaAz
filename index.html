@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="HavaAz - Azərbaycan şəhər və rayonları üçün hava proqnozu.">
+    <title>HavaAz | Azərbaycan hava proqnozu</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="asstes/images/weather-hero.png">
+
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-content">
+          
+    <a href="#home" class="logo">
+        <img src="asstes/icons/logo.png.png"
+            alt="HavaAz Logo"
+            class="logo-icon">
+        Hava<span>Az</span>
+    </a>
+
+
+            <nav class="navigation" aria-label="Əsas menyu">
+                <a href="#home">Ana səhifə</a>
+                <a href="#cities">Şəhər və rayonlar</a>
+                <a href="#about">Haqqında</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- HERO -->
+        <section class="hero" id="home">
+            <div class="hero-text">
+                <span class="tag">☁️ Azərbaycan üzrə hava proqnozu</span>
+                <h1>Havanı öyrən,<br><span>gününü planlaşdır.</span></h1>
+                <p>
+                    Azərbaycanın şəhər və rayonları üzrə cari hava
+                    vəziyyətini və növbəti 7 günlük proqnozu öyrən.
+                </p>
+                <a class="primary-button" href="#cities">
+                    Proqnoza bax →
+                </a>
+            </div>
+
+            <div class="hero-art" aria-hidden="true">
+                <span class="sun">☀️</span>
+                <span class="cloud">☁️</span>
+            </div>
+        </section>
+
+        <!-- ŞƏHƏR AXTARIŞI -->
+        <section id="cities" class="search-section">
+            <div class="section-title">
+                <span class="eyebrow">MƏKAN SEÇİMİ</span>
+                <h2>Şəhər və ya rayon seç</h2>
+                <p>İstədiyin ərazinin hava məlumatlarını əldə et.</p>
+            </div>
+
+            <div class="search-grid">
+                <div class="field">
+                    <label for="citySearch">Ərazi axtar</label>
+                    <input
+                        id="citySearch"
+                        type="search"
+                        placeholder="Məsələn: Bakı, Şəki, Quba..."
+                        autocomplete="off"
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="citySelect">Şəhər və rayonlar</label>
+                    <select id="citySelect">
+                        <option value="">Ərazi seçin</option>
+                    </select>
+                </div>
+
+                <button id="refreshBtn" class="refresh-button"
+                        type="button">
+                    ↻ Yenilə
+                </button>
+            </div>
+
+            <p id="searchInfo" class="search-info">
+                Ərazi axtar və ya siyahıdan seç.
+            </p>
+        </section>
+
+        <!-- YÜKLƏNMƏ VƏ XƏTA MESAJI -->
+        <div id="statusMessage" class="status-message"
+             role="status" aria-live="polite" hidden></div>
+
+        <!-- HAVA MƏLUMATLARI -->
+        <section id="weatherSection" hidden>
+            <div class="weather-heading">
+                <div>
+                    <span class="eyebrow">CARİ HAVA VƏZİYYƏTİ</span>
+                    <h2 id="selectedCity">Bakı</h2>
+                    <p id="updateTime">Məlumat yüklənir...</p>
+                </div>
+                <span class="source-badge">● Open-Meteo</span>
+            </div>
+
+            <div class="weather-layout">
+                <!-- ƏSAS HAVA KARTI -->
+                <article class="current-weather">
+                    <div class="card-top">
+                        <span>Hazırkı hava</span>
+                        <span>Azərbaycan</span>
+                    </div>
+
+                    <div class="main-weather">
+                        <div>
+                            <div class="temperature" id="temperature">—</div>
+                            <p class="weather-description"
+                               id="weatherDescription">
+                                Məlumat yoxdur
+                            </p>
+                        </div>
+                        <span class="main-weather-icon"
+                              id="weatherIcon"
+                              role="img" aria-label="Hava vəziyyəti">
+                            ☀️
+                        </span>
+                    </div>
+
+                    <div class="temperature-range">
+                        <span>Bugünkü min. / maks.</span>
+                        <strong id="todayRange">—</strong>
+                    </div>
+                </article>
+
+                <!-- DİGƏR GÖSTƏRİCİLƏR -->
+                <div class="details-grid">
+                    <article class="detail-card">
+                        <span class="detail-icon">🌡️</span>
+                        <p>Hiss edilən temperatur</p>
+                        <strong id="feelsLike">—</strong>
+                    </article>
+
+                    <article class="detail-card">
+                        <span class="detail-icon">💧</span>
+                        <p>Rütubət</p>
+                        <strong id="humidity">—</strong>
+                    </article>
+
+                    <article class="detail-card">
+                        <span class="detail-icon">🌬️</span>
+                        <p>Küləyin sürəti</p>
+                        <strong id="windSpeed">—</strong>
+                    </article>
+
+                    <article class="detail-card">
+                        <span class="detail-icon">🌧️</span>
+                        <p>Bugünkü maks. yağıntı ehtimalı</p>
+                        <strong id="rainChance">—</strong>
+                    </article>
+                </div>
+            </div>
+
+            <!-- 7 GÜNLÜK PROQNOZ -->
+            <section class="forecast-section">
+                <div class="section-title">
+                    <span class="eyebrow">HƏFTƏLİK PROQNOZ</span>
+                    <h2>7 günlük hava proqnozu</h2>
+                    <p>Bu gün və növbəti 6 gün.</p>
+                </div>
+
+                <div id="forecastCards" class="forecast-grid"></div>
+            </section>
+        </section>
+
+        <!-- HAQQINDA -->
+        <section class="about-section" id="about">
+            <div class="about-icon">☁️</div>
+            <div>
+                <h2>HavaAz haqqında</h2>
+                <p>
+                    HavaAz Azərbaycan şəhər və rayonları üçün hazırlanmış
+                    hava proqnozu saytıdır. Hava məlumatları Open-Meteo
+                    API vasitəsilə AJAX ilə əldə olunur.
+                </p>
+                <p class="about-note">
+                    Proqnozlar meteoroloji modellərə əsaslanır və
+                    faktiki hava şəraitindən fərqlənə bilər.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <strong>☀️ HavaAz</strong>
+            <p>Azərbaycan üçün hava proqnozu platforması</p>
+            <a href="https://open-meteo.com/"
+               target="_blank" rel="noopener noreferrer">
+                Məlumat mənbəyi: Open-Meteo
+            </a>
+        </div>
+    </footer>
+</body>
+</html>

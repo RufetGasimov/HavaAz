@@ -1,0 +1,145 @@
+
+:root {
+    --blue: #2677e8;
+    --deep-blue: #1452b0;
+    --ink: #203450;
+    --muted: #73849b;
+    --page: #f3f7fe;
+    --line: #e1eaf6;
+    --shadow: 0 12px 30px rgba(30, 76, 137, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: Arial, Helvetica, sans-serif; background: var(--page); color: var(--ink); line-height: 1.6; }
+[hidden] { display: none !important; }
+a { color: inherit; text-decoration: none; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+.container { width: min(1150px, 92%); margin: auto; }
+
+/* HEADER */
+.header { background: #fff; border-bottom: 1px solid var(--line); }
+.header-content { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.logo { font-size: 27px; font-weight: 800; letter-spacing: -1px; display: flex; align-items: center; }
+.logo > span:last-child { color: var(--blue); }
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-right: 10px;
+}
+.navigation { display: flex; align-items: center; gap: 30px; }
+.navigation a { font-weight: 600; color: #5b7089; font-size: 14px; transition: color .2s; }
+.navigation a:hover, .navigation a:focus-visible { color: var(--blue); }
+
+/* HERO */
+.hero { margin: 35px 0 27px; padding: 55px 60px; min-height: 315px; border-radius: 25px; background: linear-gradient(110deg, #dcecff, #f0f7ff 67%, #d5e8ff); display: grid; grid-template-columns: 3fr 2fr; align-items: center; overflow: hidden; }
+.tag { display: inline-block; padding: 7px 14px; background: #fff; color: var(--deep-blue); border-radius: 50px; font-size: 12px; font-weight: 700; }
+.hero h1 { font-size: clamp(31px, 4.4vw, 51px); line-height: 1.14; margin: 17px 0; letter-spacing: -1.5px; }
+.hero h1 span { color: var(--blue); }
+.hero p { max-width: 460px; font-size: 15px; color: #627b99; }
+.primary-button { display: inline-block; background: var(--blue); color: white; border-radius: 11px; padding: 12px 21px; font-weight: bold; margin-top: 23px; transition: transform .2s, background .2s; }
+.primary-button:hover { background: var(--deep-blue); transform: translateY(-2px); }
+.hero-art { min-height: 240px; position: relative; }
+.hero-art .sun { font-size: 135px; position: absolute; top: -12px; right: 70px; animation: float 4s ease-in-out infinite; }
+.hero-art .cloud { font-size: 165px; position: absolute; bottom: -35px; right: 2px; filter: drop-shadow(0 12px 15px rgba(45, 91, 149, .1)); animation: float 5s ease-in-out infinite; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+/* AXTARIŞ */
+.search-section { padding: 30px; background: white; border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); scroll-margin-top: 20px; }
+.eyebrow { font-size: 11px; font-weight: 800; color: var(--blue); letter-spacing: 1.2px; }
+.section-title h2 { font-size: 25px; margin: 4px 0; }
+.section-title p { color: var(--muted); font-size: 14px; }
+.search-grid { display: grid; grid-template-columns: 1fr 1fr auto; align-items: end; gap: 16px; margin-top: 22px; }
+.field label { display: block; margin-bottom: 7px; font-size: 13px; font-weight: 700; }
+.field input, .field select { height: 49px; width: 100%; background: #f9fbff; color: var(--ink); padding: 0 13px; border: 1px solid #dbe6f4; border-radius: 10px; outline: 0; }
+.field input:focus, .field select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(38, 119, 232, .12); }
+.refresh-button { border: 0; border-radius: 10px; padding: 0 22px; min-height: 49px; background: var(--blue); color: #fff; font-weight: bold; transition: background .2s; }
+.refresh-button:hover { background: var(--deep-blue); }
+.search-info { color: var(--muted); margin-top: 12px; font-size: 13px; }
+.status-message { padding: 16px 20px; border-radius: 12px; margin: 22px 0 0; background: #e4f0ff; color: #13509f; font-size: 14px; font-weight: 700; }
+.status-message.error { background: #fff0f0; color: #b1263e; }
+.status-message.loading { animation: blink 1.4s ease-in-out infinite; }
+@keyframes blink { 50% { opacity: .6; } }
+
+/* CARİ HAVA */
+.weather-heading { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin: 42px 0 20px; }
+.weather-heading h2 { font-size: 31px; }
+.weather-heading p { font-size: 13px; color: var(--muted); }
+.source-badge { color: #238854; background: #e4f6ec; font-size: 12px; font-weight: 700; padding: 8px 13px; border-radius: 30px; white-space: nowrap; }
+.weather-layout { display: grid; grid-template-columns: 1.05fr 1fr; gap: 20px; }
+.current-weather { background: linear-gradient(135deg, #338ef0, #1353ba); color: white; border-radius: 23px; padding: 29px; min-height: 295px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 15px 30px rgba(18, 88, 189, .18); }
+.card-top, .temperature-range { display: flex; align-items: center; justify-content: space-between; gap: 15px; font-size: 13px; }
+.card-top { opacity: .9; }
+.main-weather { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.temperature { font-size: clamp(62px, 7vw, 85px); line-height: 1.2; font-weight: 800; letter-spacing: -3px; }
+.weather-description { font-size: 17px; }
+.main-weather-icon { font-size: clamp(65px, 8vw, 100px); line-height: 1; }
+.temperature-range { border-top: 1px solid rgba(255, 255, 255, .3); padding-top: 15px; }
+.temperature-range strong { font-size: 16px; }
+.details-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.detail-card { min-width: 0; border: 1px solid var(--line); background: white; border-radius: 19px; padding: 22px; box-shadow: var(--shadow); transition: transform .2s; }
+.detail-card:hover { transform: translateY(-4px); }
+.detail-icon { font-size: 27px; }
+.detail-card p { margin: 12px 0 7px; font-size: 13px; color: var(--muted); }
+.detail-card strong { font-size: 23px; overflow-wrap: anywhere; }
+
+/* HƏFTƏLİK PROQNOZ */
+.forecast-section { margin-top: 48px; }
+.forecast-grid { margin-top: 21px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px; }
+.forecast-card { border: 1px solid var(--line); background: white; box-shadow: var(--shadow); border-radius: 17px; padding: 17px 10px; text-align: center; min-width: 0; transition: transform .2s, border-color .2s; }
+.forecast-card:hover { transform: translateY(-4px); border-color: #a7caf9; }
+.forecast-day { font-size: 14px; font-weight: 800; text-transform: capitalize; }
+.forecast-date { font-size: 12px; color: var(--muted); }
+.forecast-icon { font-size: 41px; margin: 12px 0 8px; line-height: 1.4; }
+.forecast-description { min-height: 37px; color: var(--muted); font-size: 12px; }
+.forecast-temps { margin-top: 11px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+.forecast-temps strong { font-size: 18px; }
+.forecast-temps span { font-size: 16px; color: #8fa0b5; }
+.forecast-rain { color: var(--blue); font-size: 12px; font-weight: bold; margin-top: 12px; }
+
+/* ABOUT + FOOTER */
+.about-section { background: #e5f0ff; border-radius: 20px; padding: 28px; margin: 55px 0; display: flex; gap: 22px; scroll-margin-top: 20px; }
+.about-icon { font-size: 42px; }
+.about-section h2 { font-size: 22px; margin-bottom: 7px; }
+.about-section p { color: #647c99; font-size: 14px; }
+.about-section .about-note { margin-top: 9px; }
+.footer { padding: 28px 0; border-top: 1px solid var(--line); background: white; }
+.footer-content { display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap; color: var(--muted); font-size: 12px; }
+.footer-content strong { color: var(--ink); font-size: 18px; }
+.footer-content a { color: var(--blue); }
+.footer-content a:hover { text-decoration: underline; }
+
+/* RESPONSİV GÖRÜNÜŞ */
+@media (max-width: 1000px) {
+    .forecast-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .weather-layout { grid-template-columns: 1fr; }
+    .hero { padding: 42px; }
+}
+@media (max-width: 700px) {
+    .header-content { flex-direction: column; padding: 14px 0; }
+    .navigation { justify-content: center; flex-wrap: wrap; gap: 14px; }
+    .navigation a { font-size: 12px; }
+    .hero { grid-template-columns: 1fr; padding: 30px 24px; }
+    .hero-art { display: none; }
+    .search-section { padding: 24px 18px; }
+    .search-grid { grid-template-columns: 1fr; }
+    .refresh-button { width: 100%; }
+    .weather-heading h2 { font-size: 26px; }
+    .weather-heading { align-items: flex-start; }
+    .forecast-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .current-weather { padding: 22px; min-height: 265px; }
+    .detail-card { padding: 16px; }
+    .detail-card strong { font-size: 20px; }
+    .about-section { flex-direction: column; }
+}
+@media (max-width: 370px) {
+    .main-weather-icon { font-size: 58px; }
+    .temperature { font-size: 60px; }
+    .source-badge { font-size: 10px; }
+    .forecast-card { padding: 15px 7px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; }
+}
